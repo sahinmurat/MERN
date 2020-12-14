@@ -10,11 +10,5 @@ const connectDB =async ()=>{
         console.log(error)
     }
 }
-mongoose.connect('mongodb+srv://murat:1qaZ2wsX.@cluster0.fqx6s.mongodb.net/test', {useNewUrlParser: true, useUnifiedTopology: true});
-
-const Cat = mongoose.model('Cat', { name: String });
-
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow'));
 
 module.exports = connectDB;
