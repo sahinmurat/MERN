@@ -1,17 +1,20 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-    });
-    console.log("Successfully connected to DB");
-  } catch (error) {
-    console.log("Error connecting DB", error);
-  }
-};
+const connectDB =async ()=>{
+    try {
+        await mongoose.connect('mongodb+srv://murat:1qaZ2wsX.@cluster0.fqx6s.mongodb.net/test', 
+        {useNewUrlParser: true, useUnifiedTopology: true});
+        console.log('Connected to DB')
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+mongoose.connect('mongodb+srv://murat:1qaZ2wsX.@cluster0.fqx6s.mongodb.net/test', {useNewUrlParser: true, useUnifiedTopology: true});
+
+const Cat = mongoose.model('Cat', { name: String });
+
+const kitty = new Cat({ name: 'Zildjian' });
+kitty.save().then(() => console.log('meow'));
 
 module.exports = connectDB;
